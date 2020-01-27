@@ -2,7 +2,7 @@ import pytest
 
 from src.helpers.csv_helper import get_test_data_from_csv
 from src.helpers.search_helpers import find_information_about_movie
-from src.scenarious.movie_steps import MovieSteps
+from src.scenarios.movie_steps import MovieSteps
 from tests.base_test import BaseTest
 
 
