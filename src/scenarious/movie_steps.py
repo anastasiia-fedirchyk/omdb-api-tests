@@ -6,18 +6,18 @@ from src.models.movie import Movies, UniqueMovie, mapping_factory
 class MovieSteps:
     movie_contract = Movie()
 
-    def get_movies_by_search_string(self, search_string, first_pagination: int = 1, last_pagination: int = 1) -> list:
+    def get_movies_by_search_string(self, search_string, first_page: int = 1, last_page: int = 1) -> list:
         """
         gets all movies that match search query on defined pages
         :param search_string: search query
-        :param first_pagination: start search from page, default: 1
-        :param last_pagination: stop search (including page), default: 1
+        :param first_page: start search from page, default: 1
+        :param last_page: stop search (including page), default: 1
         :return: list of UniqueMovie objects
         """
         movies_data = Movies()
         payload = {"s": search_string}
 
-        for page in range(int(first_pagination), int(last_pagination) + 1):
+        for page in range(int(first_page), int(last_page) + 1):
             payload["page"] = page
             response = self.movie_contract.api_get_movies(params=payload).json()
             if "totalResults" in response.keys():

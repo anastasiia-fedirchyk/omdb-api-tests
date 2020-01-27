@@ -1,6 +1,11 @@
 from logger_configuration import logger
 from src.helpers.api_helper import ApiHelper
 
+"""
+class to specify logic to work with Movie controller, 
+for example: in future will be added: def api_post_movie(), def api_delete_movie() etc.
+"""
+
 
 class Movie:
     api = ApiHelper()
@@ -11,6 +16,6 @@ class Movie:
         :param kwargs: params
         :return: response
         """
-        response = self.api.request(method="GET", **kwargs)
+        response = self.api.get_request(**kwargs)
         logger.debug(f"Method: 'GET', Url: {response.url}, Status code: {response.status_code}")
         return response

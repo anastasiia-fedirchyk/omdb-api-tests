@@ -11,10 +11,9 @@ def get_test_data_from_csv(file_name: str):
     :return: headers - list of str, values - list of tuples
     """
     full_file_path = os.path.join(TEST_DATA_DIRECTORY, file_name)
-    headers = []
     values = []
     with open(full_file_path, newline="") as csvfile:
-        reader = csv.reader(csvfile)
-        for iteration, row in enumerate(reader):
-            headers.extend(row) if iteration == 0 else values.append(tuple(row))
-        return headers, values
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            values.append(row)
+        return values

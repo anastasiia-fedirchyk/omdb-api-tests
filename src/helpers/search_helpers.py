@@ -10,7 +10,6 @@ def find_information_about_movie(movies_list: list, value: str, key: str = "titl
     :return: UniqueMovie object (first movie which match key and value)
     """
     for movie in movies_list:
-        for movie_key, movie_value in asdict(movie).items():
-            if movie_key == key and movie_value == value:
-                return movie
+        if asdict(movie).get(key) and asdict(movie)[key] == value:
+            return movie
     return None

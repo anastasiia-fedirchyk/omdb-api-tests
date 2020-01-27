@@ -25,8 +25,8 @@ class TestSearch(BaseTest):
 
         # step 1
         search_by_text_movies_list = self.search_steps.get_movies_by_search_string(search_string=text_to_search,
-                                                                                   first_pagination=start_search_page,
-                                                                                   last_pagination=last_search_page)
+                                                                                   first_page=start_search_page,
+                                                                                   last_page=last_search_page)
         assert len(
             search_by_text_movies_list) >= expected_list_len, f"Expected list length - {expected_list_len}, " \
             f"but was - {len(search_by_text_movies_list)}"
