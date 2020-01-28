@@ -1,10 +1,10 @@
 from logger_configuration import logger
-from src.contracts.movie import Movie
+from src.contracts.movie_api import MovieApi
 from src.models.movie import Movies, UniqueMovie, mapping_factory
 
 
 class MovieSteps:
-    movie_contract = Movie()
+    movie_contract = MovieApi()
 
     def get_movies_by_search_string(self, search_string, first_page: int = 1, last_page: int = 1) -> list:
         """
@@ -26,7 +26,7 @@ class MovieSteps:
                     unique_movie = mapping_factory.load(item, UniqueMovie)
                     movies_data.movies_list.append(unique_movie)
             else:
-                logger.info(f"Page {page} does not contain information for search query '{search_string}'")
+                logger.info(f"No results for '{search_string}' on page {page} found.")
 
         return movies_data.movies_list
 
